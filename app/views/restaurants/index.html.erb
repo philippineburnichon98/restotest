@@ -1,16 +1,8 @@
 <div class = container>
   <h1>Restaurants list</h1>
   <div class = "cards">
-    <% @restaurants.each do |restaurant| %>
-      <%= link_to restaurant_path(restaurant), :action => 'go' do %>
-          <div class="card-product">
-            <img src="https://picsum.photos/200">
-            <div class="card-product-infos">
-              <h2><%=restaurant.name%></h2>
-              <p><%=restaurant.address%></p>
-            </div>
-          </div>
-      <% end %>
+    <% @restaurants.each do |restaurant|%>
+      <%= render 'restaurant_card', restaurant: restaurant %>
     <% end %>
   </div>
 </div>

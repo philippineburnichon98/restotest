@@ -1,8 +1,12 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [:show]
+  before_action :set_restaurant, only: [:show, :destroy, :edit, :update]
 
   def index
+    @favorites = []
     @restaurants = Restaurant.all
+    @restaurants.each do |restaurant|
+      @favorites << Favorite.where(restaurant: restaurant, user: current_user)
+    end
   end
 
   def show
@@ -20,6 +24,20 @@ class RestaurantsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @restaurant.destroy
+    redirect_to restaurants_path
+  end
+
+  def edit
+    @categories = Category.all
+  end
+
+  def update
+    @restaurant.update(restaurant_params)
+    redirect_to restaurant_path(@restaurant)
   end
 
   private

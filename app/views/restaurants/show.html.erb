@@ -10,5 +10,12 @@
       <h2 class="card-trip-pricing">444</h2>
       <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
     </div>
+      <%= link_to "Delete", restaurant_path(@restaurant), class:"btn btn-danger btn-delete text-white mx-auto d-flex justify-content-center", method: :"DELETE", data: { confirm: "Are you sure ?"}%>
+      <%= link_to "Edit", edit_restaurant_path(@restaurant), class:"btn btn-danger btn-delete text-white mx-auto d-flex justify-content-center"%>
+      <%= link_to "Add to Favorite", restaurant_favorites_path(@restaurant), class:"btn btn-danger btn-delete text-white mx-auto d-flex justify-content-center", method: :"POST" %>
+      <%= link_to "Delete to Favorite", restaurant_favorite_path(@restaurant), class:"btn btn-danger btn-delete text-white mx-auto d-flex justify-content-center", method: :"DELETE", data: { confirm: "Are you sure ?"}%>
+
+
+
   </div>
 </div>
