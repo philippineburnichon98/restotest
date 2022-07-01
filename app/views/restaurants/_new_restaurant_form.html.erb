@@ -1,0 +1,10 @@
+<div class = container>
+  <%= simple_form_for @restaurant do |f| %>
+    <%= f.input :name %>
+    <%= f.input :address %>
+    <%= f.input :phone_number %>
+    <%= f.input :description %>
+    <%= f.input :category_id, collection: @categories %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
+</div>
