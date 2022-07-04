@@ -1,11 +1,11 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [:show, :destroy, :edit, :update]
+  before_action :set_restaurant, only: [:show, :destroy, :edit, :update, :toggle_favorite]
 
   def index
-    @favorites = []
+    # @favorites = []
     @restaurants = Restaurant.all
     @restaurants.each do |restaurant|
-      @favorites << Favorite.where(restaurant: restaurant, user: current_user)
+      # @favorites << Favorite.where(restaurant: restaurant, user: current_user)
     end
   end
 
@@ -38,6 +38,10 @@ class RestaurantsController < ApplicationController
   def update
     @restaurant.update(restaurant_params)
     redirect_to restaurant_path(@restaurant)
+  end
+
+  def toggle_favorite
+    current_user.favorited?(@restaurant) ? current_user.unfavorite(@restaurant) : current_user.favorite(@restaurant)
   end
 
   private
