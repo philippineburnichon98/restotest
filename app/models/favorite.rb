@@ -1,5 +1,12 @@
+# frozen_string_literal: true
+
 class Favorite < ApplicationRecord
-  belongs_to :restaurant
-  belongs_to :user
-  validates_uniqueness_of :user_id, scope: :restaurant_id
+  extend ActsAsFavoritor::FavoriteScopes
+
+  belongs_to :favoritable, polymorphic: true
+  belongs_to :favoritor, polymorphic: true
+
+  def block!
+    update!(blocked: true)
+  end
 end

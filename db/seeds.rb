@@ -12,7 +12,7 @@ puts "Cleaning database..."
 
 Restaurant.destroy_all
 Category.destroy_all
-Favorite.destroy_all
+# Favorite.destroy_all
 Reservation.destroy_all
 User.destroy_all
 
@@ -48,15 +48,15 @@ puts "Creating restaurants..."
   )
 end
 
-puts "Creating favorites..."
-5.times do
-  user = User.order(Arel.sql('RANDOM()')).first
-  restaurant = Restaurant.order(Arel.sql('RANDOM()')).first
-  Favorite.create!(
-    user: user,
-    restaurant: restaurant
-  )
-end
+# puts "Creating favorites..."
+# 5.times do
+#   user = User.order(Arel.sql('RANDOM()')).first
+#   restaurant = Restaurant.order(Arel.sql('RANDOM()')).first
+#   Favorite.create!(
+#     user: user,
+#     restaurant: restaurant
+#   )
+# end
 
 puts "Creating reservations..."
 5.times do
