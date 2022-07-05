@@ -39,16 +39,6 @@ ActiveRecord::Schema.define(version: 2022_07_05_100833) do
     t.index ["scope"], name: "index_favorites_on_scope"
   end
 
-  create_table "ratings", force: :cascade do |t|
-    t.integer "rate"
-    t.bigint "user_id", null: false
-    t.bigint "restaurant_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["restaurant_id"], name: "index_ratings_on_restaurant_id"
-    t.index ["user_id"], name: "index_ratings_on_user_id"
-  end
-
   create_table "reservations", force: :cascade do |t|
     t.bigint "restaurant_id", null: false
     t.bigint "user_id", null: false
@@ -94,8 +84,6 @@ ActiveRecord::Schema.define(version: 2022_07_05_100833) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "ratings", "restaurants"
-  add_foreign_key "ratings", "users"
   add_foreign_key "reservations", "restaurants"
   add_foreign_key "reservations", "users"
   add_foreign_key "restaurants", "categories"

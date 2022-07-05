@@ -43,20 +43,9 @@ puts "Creating restaurants..."
     address: Faker::Address.full_address,
     phone_number: Faker::PhoneNumber.cell_phone,
     description: Faker::Lorem.paragraph,
-    rating: rand(1..5),
     category: category
   )
 end
-
-# puts "Creating favorites..."
-# 5.times do
-#   user = User.order(Arel.sql('RANDOM()')).first
-#   restaurant = Restaurant.order(Arel.sql('RANDOM()')).first
-#   Favorite.create!(
-#     user: user,
-#     restaurant: restaurant
-#   )
-# end
 
 puts "Creating reservations..."
 5.times do
