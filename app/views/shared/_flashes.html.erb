@@ -1,14 +1,16 @@
 <% if notice %>
   <div class="flash flash-success alert alert-dismissible fade show" role="alert">
-    <span><strong>Yay!</strong> 🎉 you successfully signed in to our service. </span>
+    <span><%= notice %></span>
     <a data-bs-dismiss="alert" aria-label="Close">
       <i class="fas fa-times"></i>
+
     </a>
   </div>
 <% end %>
+
 <% if alert %>
   <div class="flash flash-warning alert alert-dismissible fade show" role="alert">
-    <span><strong>Mmh</strong> 🤔 seems like you haven't logged-in yet. </span>
+    <span><%= alert %></span>
     <a data-bs-dismiss="alert" aria-label="Close">
       <i class="fas fa-times"></i>
     </a>
