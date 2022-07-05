@@ -18,6 +18,7 @@
   font-size: 16px;
   font-weight: bold;
   margin: 0;
+  color: rgb(30, 30, 30)
 }
 
 .card-product p {
@@ -26,9 +27,18 @@
   opacity: .7;
   margin-bottom: 0;
   margin-top: 8px;
+  color: rgb(30, 30, 30)
+}
+
+.card-product i {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+  color: rgb(30, 30, 30)
 }
 
 .card-product .card-product-infos {
   padding: 16px;
-  color: rgb(30, 30, 30);
 }
