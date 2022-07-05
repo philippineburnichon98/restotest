@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_04_071344) do
+ActiveRecord::Schema.define(version: 2022_07_05_100833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 2022_07_04_071344) do
     t.index ["scope"], name: "index_favorites_on_scope"
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.integer "rate"
+    t.bigint "user_id", null: false
+    t.bigint "restaurant_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["restaurant_id"], name: "index_ratings_on_restaurant_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
+
   create_table "reservations", force: :cascade do |t|
     t.bigint "restaurant_id", null: false
     t.bigint "user_id", null: false
@@ -56,10 +66,18 @@ ActiveRecord::Schema.define(version: 2022_07_04_071344) do
     t.string "phone_number"
     t.text "description"
     t.bigint "category_id", null: false
-    t.float "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_restaurants_on_category_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "content"
+    t.bigint "reservation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["reservation_id"], name: "index_reviews_on_reservation_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,7 +94,10 @@ ActiveRecord::Schema.define(version: 2022_07_04_071344) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "ratings", "restaurants"
+  add_foreign_key "ratings", "users"
   add_foreign_key "reservations", "restaurants"
   add_foreign_key "reservations", "users"
   add_foreign_key "restaurants", "categories"
+  add_foreign_key "reviews", "reservations"
 end

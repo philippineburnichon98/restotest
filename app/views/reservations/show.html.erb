@@ -12,4 +12,14 @@
     </div>
       <%= link_to "Back to Restaurants", restaurants_path, class:"btn btn-danger btn-delete text-white mx-auto d-flex justify-content-center"%>
   </div>
+
+  <div class="review">
+    <h2>Laissez une évaluation</h2>
+    <%= simple_form_for [@reservation, @review] do |f| %>
+      <%= f.input :content %>
+      <%= f.input :rating, collection: Review::AUTHORIZED_RATINGS,
+                          include_blank: false %>
+      <%= f.submit class: "btn btn-primary", value: "Valider" %>
+    <% end %>
+  </div>
 </div>

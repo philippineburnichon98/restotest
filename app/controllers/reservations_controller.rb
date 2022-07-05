@@ -4,6 +4,7 @@ class ReservationsController < ApplicationController
   end
 
   def create
+    @review = Review.new
     @restaurant = Restaurant.find(params[:restaurant_id])
     @reservation = Reservation.new(reservation_params)
     @reservation.user = current_user
