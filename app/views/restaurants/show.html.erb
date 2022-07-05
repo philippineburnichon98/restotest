@@ -1,4 +1,10 @@
+
 <div class = container>
+<div class="back-arrow">
+        <%= link_to restaurants_path do %>
+         <p>Retour</p>
+         <% end %>
+</div>
   <h1>Restaurant</h1>
   <div class="card-trip">
     <% if @restaurant.photo.attached? %>
