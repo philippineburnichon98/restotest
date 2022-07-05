@@ -1,0 +1,15 @@
+<div class = container>
+  <h1>Merci <%=@reservation.user.username%></h1>
+  <div class="card-trip">
+    <img src="https://picsum.photos/800" />
+    <div class="card-trip-infos">
+      <div>
+        <h2><%=@restaurant.name%></h2>
+        <p><%=@restaurant.description%></p>
+        <p>Number of Guest: <%=@reservation.guest_number%></p>
+        <p>Date: <%=@reservation.date%></p>
+      </div>
+    </div>
+      <%= link_to "Back to Restaurants", restaurants_path, class:"btn btn-danger btn-delete text-white mx-auto d-flex justify-content-center"%>
+  </div>
+</div>

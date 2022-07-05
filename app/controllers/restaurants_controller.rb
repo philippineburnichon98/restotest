@@ -10,6 +10,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
+    @reservation = Reservation.new
   end
 
   def new
@@ -42,6 +43,7 @@ class RestaurantsController < ApplicationController
 
   def toggle_favorite
     current_user.favorited?(@restaurant) ? current_user.unfavorite(@restaurant) : current_user.favorite(@restaurant)
+    redirect_to restaurants_path
   end
 
   private
