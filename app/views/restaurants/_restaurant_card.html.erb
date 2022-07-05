@@ -1,6 +1,10 @@
 <div class="card-product">
   <%= link_to restaurant_path(restaurant) do %>
-    <img src="https://picsum.photos/200">
+      <% if restaurant.photo.attached? %>
+        <%= cl_image_tag restaurant.photo.key, height: 300, width: 300, crop: :fill %>
+      <% else %>
+        <img src="https://picsum.photos/200">
+      <% end %>
     <div class="card-product-infos">
       <h2><%=restaurant.name%></h2>
       <p><%=restaurant.address%></p>
