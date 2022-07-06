@@ -1,5 +1,5 @@
 <div class = container>
-  <h1>Merci <%=@reservation.user.username%></h1>
+  <h1>Merci <%=current_user.username%></h1>
   <div class="card-trip">
     <% if @restaurant.photo.attached? %>
         <%= cl_image_tag @restaurant.photo.key, height: 300, width: 300, crop: :fill %>
@@ -17,6 +17,9 @@
       <%= link_to "Back to Restaurants", restaurants_path, class:"btn btn-danger btn-delete text-white mx-auto d-flex justify-content-center"%>
   </div>
 
+    <br>
+    <br>
+    <br>
   <div class="review">
     <h2>Laissez une évaluation</h2>
     <%= simple_form_for [@reservation, @review] do |f| %>
